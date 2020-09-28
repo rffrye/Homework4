@@ -11,7 +11,7 @@
             answer: "parentheses"
         },
         {
-            question: "Arrays in Javascript can be used to store ____.",
+            question: "Arrays in Javascript can be used to store ____",
             choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
             answer: "all of the above"
         },
@@ -25,7 +25,16 @@
             choices: ["Javascript", "terminal / bash", "for loops", "console log"],
             answer: "console log"
         },
-    
+        {
+            question: "Which is not a foundational language in Web Development?",
+            choices: ["Javascript", "CSS", "HTML", "Chinstrap"],
+            answer: "Chinstrap"
+        },
+        {
+            question: "What does CSS stand for?",
+            choices: ["Character Selection Screen", "Chicken Salad Sandwich", "Cascading Style Sheets", "Cybernet Software Systems"],
+            answer: "Cascading Style Sheets"
+        },
     ];
     var score = 0;
 
