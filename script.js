@@ -40,15 +40,29 @@
    
     var score = 0;
     var qInedx = 0;
-    var timeleft = document.querySelector("currentTime");
+    var timeLeft = document.querySelector("#currentTime");
     var timer = document.querySelector("#startTimer");
     var questionDiv = document.querySelector("#questionDiv");
-    var container = documetn.querySelector("#container")
-    var listItem = document.createElement("ul")
+    var container = document.querySelector("#container")
+    var ulItem = document.createElement("ul")
     var seconds = 90; //15 seconds per question
     var holdInt = 0;
     var penalty = 10;
     
 
- 
+//  Quiz start timer function
 
+timer.addEventListener("click", function() {
+    if (holdInt === 0) {
+        holdInt = setInterval(function () {
+            seconds--;
+            timeLeft.textContent="Time: " + seconds;
+
+            if (seconds <= 0) {
+                clearInterval(holdInt);
+                allDone();
+                timeLeft.textContent = "Time's up!";
+            }
+        }, 1000);
+    }
+});
