@@ -37,7 +37,7 @@
         },
     ];
    
-   
+//    Variables
     var score = 0;
     var qIndex = 0;
     var timeLeft = document.querySelector("#currentTime");
@@ -48,10 +48,8 @@
     var seconds = 90; //15 seconds per question
     var holdInt = 0;
     var penalty = 10;
-    
 
 //  Quiz start timer function
-
 timer.addEventListener("click", function() {
     if (holdInt === 0) {
         holdInt = setInterval(function () {
@@ -71,7 +69,6 @@ document.get
 
 // Renders questions and choices to page: 
 function render(qIndex) {
-    // Clears existing data 
     questionDiv.innerHTML = "";
     ulItem.innerHTML = "";
     // For loops to loop through all info in array
@@ -81,15 +78,45 @@ function render(qIndex) {
         var userChoices = questions[qIndex].choices;
         questionDiv.textContent = userQuestion;
     };
-    // New for each for question choices
+    // New for each for choices
     userChoices.forEach(function (newItem) {
         var listItem = document.createElement("input");
         listItem.type = "button";
         listItem.className ="btn btn-primary";
-        listItem.style = "width: 80%; margin: 10px";
+        listItem.style = "width: 90%; margin-top: 20px; font-size: 15px; text-align:center;";
+        listItem.textContent = newItem;
         listItem.value = newItem;
         questionDiv.appendChild(ulItem);
         ulItem.appendChild(listItem);
         listItem.addEventListener("click", (compare));
     });
 };
+
+// Event compares choices with answer from array
+function compare(event) {
+    var element = event.target;
+
+    if (element.matches("input")) {
+        var createDiv = document.createElement("div");
+        createDiv.setAttribute("id", "createDiv");
+        if (element.textContent == questions[qIndex].answer) {
+            score++;
+            createDiv.textContent = "Correct!";
+        } 
+        else {
+            // Will deduct 10s off seconds for wrong answers
+            seconds = seconds - penalty;
+            createDiv.textContent = "Incorrect!";
+        }
+    }
+    qIndex++; //advance questions
+
+    if (qIndex >= questions.length) {
+        // allDone will append last page with score 
+        allDone();
+        createDiv.textContent = "End of quiz!" + " " + "You got  " + score + "/" + questions.length + " Correct!";
+    } else {
+        render(qIndex);
+    }
+    questionDiv.appendChild(createDiv);
+}
