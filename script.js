@@ -115,8 +115,89 @@ function compare(event) {
         // allDone will append last page with score 
         allDone();
         createDiv.textContent = "End of quiz!" + " " + "You got  " + score + "/" + questions.length + " Correct!";
+        createDiv.style = "text-align: center;"
     } else {
         render(qIndex);
     }
     questionDiv.appendChild(createDiv);
 }
+
+function allDone() {
+    questionDiv.innerHTML = "";
+    currentTime.innerHTML = "";
+    
+    // Heading:
+    var createH1 = document.createElement("h1");
+    createH1.setAttribute("id", "createH1");
+    createH1.textContent = "All Done!"
+    
+    questionDiv.appendChild(createH1);
+    
+    // Paragraph
+    var createP = document.createElement("p");
+    createP.setAttribute("id", "createP");
+    
+    questionDiv.appendChild(createP);
+    
+    // Calculates time remaining and replaces it with score
+    if (seconds >= 0) {
+        var timeRemaining = seconds;
+        var createP2 = document.createElement("p");
+        clearInterval(holdInt);
+        createP.textContent = "Final score: " + timeRemaining;
+    
+        questionDiv.appendChild(createP2);
+    }
+    
+    // Label
+    var createLabel = document.createElement("label");
+    createLabel.setAttribute("id", "createLabel");
+    createLabel.textContent = "Enter your initials: ";
+    
+    questionDiv.appendChild(createLabel);
+    
+    // input
+    var createInput = document.createElement("input");
+    createInput.setAttribute("type", "text");
+    createInput.setAttribute("id", "initials");
+    createInput.textContent = "";
+    
+    questionDiv.appendChild(createInput);
+    
+    // submit
+    var createSubmit = document.createElement("button");
+    createSubmit.type = "button";
+    createSubmit.className ="btn btn-primary";
+    createSubmit.style = "width: 100%; margin-top: 20px; font-size: 15px; text-align:center;";
+    createSubmit.textContent = "Submit";
+    
+    questionDiv.appendChild(createSubmit);
+    
+    // Event listener to save intials and score to local storage
+    createSubmit.addEventListener("click", function () {
+        var initials = createInput.value;
+    
+        if (initials === null) {
+    
+            console.log("No value entered!");
+    
+        } else {
+            var finalScore = {
+                initials: initials,
+                score: timeRemaining
+            }
+            console.log(finalScore);
+            var allScores = localStorage.getItem("allScores");
+            if (allScores === null) {
+                allScores = [];
+            } else {
+                allScores = JSON.parse(allScores);
+            }
+            allScores.push(finalScore);
+            var newScore = JSON.stringify(allScores);
+            localStorage.setItem("allScores", newScore);
+            window.location.replace("scores.html");
+        }
+    });
+    
+    }
