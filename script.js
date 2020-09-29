@@ -36,12 +36,19 @@
             answer: "Cascading Style Sheets"
         },
     ];
+   
+   
     var score = 0;
-
-
-    // for loop through the questions
-    for( var i=0; i < questions.lenght; i++) {
+    var qInedx = 0;
+    var timeleft = document.querySelector("currentTime");
+    var timer = document.querySelector("#startTimer");
+    var questionDiv = document.querySelector("#questionDiv");
+    var container = documetn.querySelector("#container")
+    var listItem = document.createElement("ul")
+    var seconds = 90; //15 seconds per question
+    var holdInt = 0;
+    var penalty = 10;
     
-    }
 
+ 
 
