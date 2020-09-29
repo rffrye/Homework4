@@ -39,7 +39,7 @@
    
    
     var score = 0;
-    var qInedx = 0;
+    var qIndex = 0;
     var timeLeft = document.querySelector("#currentTime");
     var timer = document.querySelector("#startTimer");
     var questionDiv = document.querySelector("#questionDiv");
@@ -65,4 +65,20 @@ timer.addEventListener("click", function() {
             }
         }, 1000);
     }
+    render(qIndex);
 });
+document.get
+
+// Renders questions and choices to page: 
+function render(qIndex) {
+    // Clears existing data 
+    questionDiv.innerHTML = "";
+    ulItem.innerHTML = "";
+    // For loops to loop through all info in array
+    for (var i = 0; i < questions.length; i++) {
+        // Appends question title only
+        var userQuestion = questions[qIndex].question;
+        var userChoices = questions[qIndex].choices;
+        questionDiv.textContent = userQuestion;
+    };
+}
