@@ -81,4 +81,15 @@ function render(qIndex) {
         var userChoices = questions[qIndex].choices;
         questionDiv.textContent = userQuestion;
     };
-}
+    // New for each for question choices
+    userChoices.forEach(function (newItem) {
+        var listItem = document.createElement("input");
+        listItem.type = "button";
+        listItem.className ="btn btn-primary";
+        listItem.style = "width: 80%; margin: 10px";
+        listItem.value = newItem;
+        questionDiv.appendChild(ulItem);
+        ulItem.appendChild(listItem);
+        listItem.addEventListener("click", (compare));
+    });
+};
