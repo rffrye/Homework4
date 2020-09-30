@@ -65,7 +65,6 @@ timer.addEventListener("click", function() {
     }
     render(qIndex);
 });
-document.get
 
 // Renders questions and choices to page: 
 function render(qIndex) {
