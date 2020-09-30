@@ -9,3 +9,15 @@ The objective was to create a timed quiz and keep a running talley of scores bas
 
 The code is broken down into 4 parts: 2 html files (index.html and scores.html) and 2 js files (script.js and scores.js)  They were separated into coordinating folders to keep the repository more organized. All styling attributes were added using .style in the js files.  Bootstrap was used to style all buttons and cards.
 
+Go To:  
+
+* https://rffrye.github.io/Homework4/ to see the deployed quiz.
+
+*https://github.com/rffrye/Homework4 to see the code repository.
+
+Example img of the quiz:
+
+
+![Code Quiz Main ](/assets/ScreenShot1.png)
+![Code Quiz Question](/assets/ScreenShot2.png)
+![Code quiz Scores](/assets/ScreenShot3.png)
